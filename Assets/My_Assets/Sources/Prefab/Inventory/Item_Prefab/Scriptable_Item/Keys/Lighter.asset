@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f13034ee054de41879aa90eee2bdb0, type: 3}
+  m_Name: Lighter
+  m_EditorClassIdentifier: 
+  itemName: "\uB77C\uC774\uD130"
+  itemType: 0
+  ItemImage: {fileID: 21300000, guid: 4468bb1d2ab01fd4bba3ef675e6d65b0, type: 3}
+  itemPrefab: {fileID: 7959198703817588561, guid: 35148b62404308f4e8d9b0e7296e54e2,
+    type: 3}
+  item_exp: "\uC65C\uC778\uC9C0 \uCE90\uBE44\uB137\uC5D0 \uB4E4\uC5B4\uC788\uB358
+    \uB77C\uC774\uD130.\n\uAE30\uB984\uC774 \uC5BC\uB9C8 \uB0A8\uC9C0 \uC54A\uC558\uC9C0\uB9CC
+    \uD55C \uBC88 \uC815\uB3C4\uB294 \uCDA9\uBD84\uD788 \uBD99\uC77C \uAC83 \uAC19\uB2E4."
+  Usable: 1

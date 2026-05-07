@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f13034ee054de41879aa90eee2bdb0, type: 3}
+  m_Name: Comb_Red
+  m_EditorClassIdentifier: 
+  itemName: Red
+  itemType: 2
+  ItemImage: {fileID: 21300000, guid: 7ed4538531602dd4998c138684bf38f8, type: 3}
+  itemPrefab: {fileID: 3708107383476625084, guid: b140f5894c8a9794b8087ce161264c6e,
+    type: 3}
+  item_exp: "\uBE68\uAC04\uC0C9."
