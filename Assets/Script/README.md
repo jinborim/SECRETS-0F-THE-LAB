@@ -1,12 +1,6 @@
 플레이 영상
 https://www.youtube.com/watch?v=J6AP-euIyn4
 
-에셋 폴더
-https://github.com/jinborim/SECRETS-0F-THE-LAB
-
------------------------------------------------------------------
-
-
 퍼즐 및 기믹
 
 퍼즐의 전체 로직과 개별 조각의 움직임을 관리
