@@ -1,45 +1,104 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CinematicTrigger : MonoBehaviour
 {
     /**
-     *  ¾ÀÀ¸·Î ³Ñ¾î¿ÀÀÚ¸¶ÀÚ NPC ¾Ö´Ï¸ŞÀÌ¼Ç°ú TTS À½¼ºÀ» Ãâ·Â
+     *  ì”¬ìœ¼ë¡œ ë„˜ì–´ì˜¤ìë§ˆì NPC ì• ë‹ˆë©”ì´ì…˜ê³¼ TTS ìŒì„±ì„ ì¶œë ¥
      **/
 
     public Animator npcAnimator;
-    public string animationTriggerName = "Talk"; // ¹Í»ç¸ğ ¾Ö´Ï¸ŞÀÌ¼Ç ÆÄ¶ó¹ÌÅÍ ÀÌ¸§
+    public string animationTriggerName = "Talk"; // ë¯¹ì‚¬ëª¨ ì• ë‹ˆë©”ì´ì…˜ íŒŒë¼ë¯¸í„° ì´ë¦„
 
     public AudioSource ttsSource;
     public AudioClip ttsClip;
 
+    [Header("VR Subtitle")]
+    public Canvas subtitleCanvas;
+    public GameObject subtitlePanel;
+    public Text subtitleText;
+    [TextArea(2, 5)]
+    public string subtitleMessage = "ì—°êµ¬ì›\nìë„¤ëŠ”.. ì–´ë–»ê²Œ ì—¬ê¸°ë¡œ ì˜¨ê±°ì§€..?";
+
+    [SerializeField] private Vector3 subtitleLocalPosition = new Vector3(0f, -0.25f, 1.5f);
+    [SerializeField] private Vector3 subtitleLocalScale = new Vector3(0.0015f, 0.0015f, 0.0015f);
+
     void Start()
     {
-        // ¾ÀÀ¸·Î ³Ñ¾î¿ÀÀÚ¸¶ÀÚ 1ÃÊ µÚ¿¡ ½Ã³×¸¶Æ½ ½ÃÀÛ
+        // ì”¬ìœ¼ë¡œ ë„˜ì–´ì˜¤ìë§ˆì 1ì´ˆ ë’¤ì— ì‹œë„¤ë§ˆí‹± ì‹œì‘
         StartCoroutine(PlayCinematic(1.0f));
     }
 
     IEnumerator PlayCinematic(float delay)
     {
-        // ÁöÁ¤µÈ ½Ã°£ ´ë±â
+        // ì§€ì •ëœ ì‹œê°„ ëŒ€ê¸°
         yield return new WaitForSeconds(delay);
 
-        // ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ¶û TTS À½¼º µ¿½Ã¿¡ ½ÇÇà
-        // ¹Í»ç¸ğ ¾Ö´Ï¸ŞÀÌ¼Ç½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ì´ë‘ TTS ìŒì„± ë™ì‹œì— ì‹¤í–‰
+        // ë¯¹ì‚¬ëª¨ ì• ë‹ˆë©”ì´ì…˜ì‹¤í–‰
         if (npcAnimator != null)
         {
             npcAnimator.SetTrigger(animationTriggerName);
-            Debug.Log("¹Í»ç¸ğ ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà");
+            Debug.Log("ë¯¹ì‚¬ëª¨ ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰");
         }
 
-        // TTS À½¼º Àç»ı 
+        SetupVrSubtitle();
+
+        if (subtitleText != null)
+        {
+            subtitleText.text = subtitleMessage;
+        }
+
+        if (subtitlePanel != null)
+        {
+            subtitlePanel.SetActive(true);
+        }
+
+        // TTS ìŒì„± ì¬ìƒ
         if (ttsSource != null && ttsClip != null)
         {
             ttsSource.clip = ttsClip;
             ttsSource.Play();
-            Debug.Log("TTS Àç»ı");
+            Debug.Log("TTS ì¬ìƒ");
+
+            yield return new WaitForSeconds(ttsClip.length);
         }
+
+        if (subtitlePanel != null)
+        {
+            subtitlePanel.SetActive(false);
+        }
+    }
+
+    private void SetupVrSubtitle()
+    {
+        if (subtitleCanvas == null)
+        {
+            return;
+        }
+
+        Camera vrCamera = Camera.main;
+        if (vrCamera == null)
+        {
+            vrCamera = FindObjectOfType<Camera>();
+        }
+
+        if (vrCamera == null)
+        {
+            Debug.LogWarning("VR ìë§‰ì„ ë°°ì¹˜í•  ì¹´ë©”ë¼ë¥¼ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.");
+            return;
+        }
+
+        RectTransform canvasTransform = subtitleCanvas.transform as RectTransform;
+        subtitleCanvas.renderMode = RenderMode.WorldSpace;
+        subtitleCanvas.worldCamera = vrCamera;
+        canvasTransform.SetParent(vrCamera.transform, false);
+        canvasTransform.localPosition = subtitleLocalPosition;
+        canvasTransform.localRotation = Quaternion.identity;
+        canvasTransform.localScale = subtitleLocalScale;
+        canvasTransform.sizeDelta = new Vector2(1000f, 220f);
     }
 
 

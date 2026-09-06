@@ -490,6 +490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 67518917}
   - component: {fileID: 67518916}
+  - component: {fileID: 67518918}
   m_Layer: 0
   m_Name: XRPlatformControllerSetup
   m_TagString: Untagged
@@ -528,6 +529,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &67518918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67518915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60bd11383608ff44b8467ea7d6f5a11b, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  npcAnimator: {fileID: 0}
+  animationTriggerName: Talk
+  ttsSource: {fileID: 1356361121}
+  ttsClip: {fileID: 8300000, guid: 2382385e90106f9438a10b48299f90e7, type: 3}
+  subtitleCanvas: {fileID: 1951804234}
+  subtitlePanel: {fileID: 1236141140}
+  subtitleText: {fileID: 1934735749}
+  subtitleMessage: "\uC5F0\uAD6C\uC6D0\n\uC790\uB124\uB294.. \uC5B4\uB5BB\uAC8C \uC5EC\uAE30\uB85C \uC628\uAC70\uC9C0..?"
+  subtitleLocalPosition: {x: 0, y: -0.25, z: 1.5}
+  subtitleLocalScale: {x: 0.0015, y: 0.0015, z: 0.0015}
 --- !u!1 &130028664
 GameObject:
   m_ObjectHideFlags: 0
@@ -6771,7 +6794,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2382385e90106f9438a10b48299f90e7, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
